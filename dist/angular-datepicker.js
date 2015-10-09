@@ -187,13 +187,22 @@
         function hidePrevMonth(date) {
           var copyDate = angular.copy(date);
 
-          return copyDate.setMonth(copyDate.getMonth()-1) <= scope.minDate;
+          if(scope.minDate) {
+
+            return copyDate.getMonth()-1 < scope.minDate.getMonth() && copyDate.getYear() <= scope.minDate.getYear();
+          } else {
+            return true;
+          }
         }
 
         function hideNextMonth(date) {
           var copyDate = angular.copy(date);
 
-          return copyDate.setMonth(copyDate.getMonth()+1) > scope.maxDate;
+          if(scope.maxDate) {
+            return copyDate.getMonth()+1 > scope.maxDate.getMonth() && copyDate.getYear() >= scope.maxDate.getYear();
+          } else {
+            return true;
+          }
         }
 
         scope.$watch(watch, update);
