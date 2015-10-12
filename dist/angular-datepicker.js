@@ -57,7 +57,7 @@
 
 				scope.$watch('useMonth', function(newVal) {
 					if(newVal) {
-						scope.date = new Date([newVal.year, newVal.month + 1]);
+						scope.date = new Date(newVal.year, newVal.month + 1, 0);
 						update();
 						// Destroy watcher (http://stackoverflow.com/questions/14957614/angularjs-clear-watch)
 					}
@@ -188,7 +188,7 @@
 
 					scope.currentMonth = {
 						year: scope.date.getFullYear(),
-						month: scope.date.getMonth(),
+						month: scope.date.getMonth()
 					};
 				}
 
